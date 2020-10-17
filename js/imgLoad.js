@@ -8,7 +8,7 @@ fileInput.addEventListener("change", function (e) {
   if (typeof file === "undefined") {
     document.getElementById("imageDisplayArea").src = "imgs/noimg.png";
     return;
-  };
+  }
 
   if (file.type.match(imageType)) {
     var reader = new FileReader();

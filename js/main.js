@@ -59,13 +59,13 @@ function checkPattern() {
       if (formFild)
         if (formFild.children[0].value.length < 1) {
           formFild.children[0].style.borderColor = "red";
-          mes.innerHTML = "Заполните дополнительные поля или удалите ненужные.";
+          mes.innerHTML = "Заполните дополнительные поля или удалите ненужные";
           flag = false;
         } else formFild.children[0].style.borderColor = "";
       if (formFild)
         if (formFild.children[2].value.length < 1) {
           formFild.children[2].style.borderColor = "red";
-          mes.innerHTML = "Заполните дополнительные поля или удалите ненужные.";
+          mes.innerHTML = "Заполните дополнительные поля или удалите ненужные";
           flag = false;
         } else formFild.children[2].style.borderColor = "";
     }
@@ -81,16 +81,17 @@ function checkPattern() {
 }
 
 function generateHTMLResume() {
-//генерация основной части
+  //генерация основной части
   var recumeContent =
     "<head><meta charset='utf-8'><title>Resume</title></head>";
   var styles =
-    "<style>img {height: 150px}</style>";
+    "<style>body {display: flex; flex-flow: row wrap; justify-content: space-around; width: 800px; margin: auto; margin-top: 20px} img {height: 250px; object-fit: cover; box-shadow: 0px 0px 5px 0px black; width: 250px; border-radius: 50%;} .mainBlock {padding: 10px} .contacts > h4 {margin-bottom: 0} .contentItem { padding: 1rem; background-color: rgb(7 48 89 / 47%); color: white; margin: 1rem; border: solid 3px rgb(65 69 73)} .contentItem > div {margin-bottom: 15px}</style>";
   recumeContent =
-    recumeContent + styles +
+    recumeContent +
+    styles +
     "<body style='font-family: Arial, Helvetica, sans-serif'>" +
     document.getElementById("displayArea").innerHTML +
-    "<div><h2>" +
+    "<div class='mainBlock'><div><h2>" +
     document.getElementById("surname").value +
     " " +
     document.getElementById("name").value +
@@ -99,20 +100,20 @@ function generateHTMLResume() {
     "</h2></div>" +
     "<div>Год рождения: " +
     document.getElementById("year").value +
-    "</div><div><h4>Контакты:</h4><p>Телефон: " +
+    "</div><div class='contacts'><h4>Контакты:</h4><p>Телефон: " +
     document.getElementById("phone").value +
     "</p><p>Email: " +
     document.getElementById("email").value +
-    "</p>";
-//генерация дополнительных блоков
+    "</p></div></div>";
+  //генерация дополнительных блоков
   if (numBlocks.length > 0) {
     for (var i = 0; i < numBlocks.length; i++) {
-      if ((numBlocks[i] == 0)||(numBlocks[i].indexOf(true)<0)) continue;
+      if (numBlocks[i] == 0 || numBlocks[i].indexOf(true) < 0) continue;
       recumeContent =
         recumeContent +
-        "<div><h4><u>" +
+        "<div class='contentItem'><h3><u>" +
         document.getElementById("titleBlock" + (i + 1)).innerHTML +
-        "</u></h4></div>";
+        "</u></h3>";
       for (var j = 0; j < numBlocks[i].length; j++) {
         if (document.getElementById("formFild" + (i + 1) + "-" + (j + 1)))
           recumeContent =
@@ -120,7 +121,7 @@ function generateHTMLResume() {
             "<div><b>" +
             document.getElementById("formFild" + (i + 1) + "-" + (j + 1))
               .children[0].value +
-            "</b>:";
+            "</b>: ";
         if (document.getElementById("formFild" + (i + 1) + "-" + (j + 1)))
           recumeContent =
             recumeContent +
@@ -128,6 +129,7 @@ function generateHTMLResume() {
               .children[2].value +
             "</div>";
       }
+      recumeContent = recumeContent + "</div>";
     }
   }
   recumeContent = recumeContent + "</body>";

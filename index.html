@@ -4,50 +4,61 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Resume Generator</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Resume Generator</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id="page-wrapper">
-            <h1>Resume Generator</h1>
-            <div id="displayArea">
-                <img id="imageDisplayArea" src="imgs/noimg.png"/>
+    <div id="page-wrapper">
+        <h1>Resume Generator</h1>
+        <div id="displayArea">
+            <img id="imageDisplayArea" src="imgs/noimg.png" />
+        </div>
+        <div id="resumeForm" class="form">
+
+            <div><b>Загрузите фото:</b> <input type="file" id="fileInput" accept="image/*" required></div>
+            <div><b>Фамилия:</b> <input id="surname" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}"
+                    required></div>
+            <div><b>Имя:</b> <input id="name" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required>
             </div>
-            <div id="resumeForm" class="form">
-                <div id="message" style="font-size: 14px; color: red;"></div>
-                <div><b>Загрузите фото:</b> <input type="file" id="fileInput" accept="image/*" required></div>
-                <div><b>Фамилия:</b> <input id="surname" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required></div>
-                <div><b>Имя:</b> <input id="name" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required></div>
-                <div><b>Отчество:</b> <input id="patronymic" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required></div>
-                <div><b>Год рождения:</b> <input id="year" type="number" min="1900" max="2020" class="text-input" pattern="(?:19|20)[0-9]{2}" required></div>
-                <div><b>Телефон:</b> <!--<input id="phone" type="tel" class="text-input" pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="+375(__)___-__-__" required>-->
-                    <div class="formItem"><input id="phone" type="tel" class="text-input" pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="+375(__)___-__-__" required></div>
-                </div>
-                <div><b>Эл. почта:</b> <input id="email" type="email" class="text-input" required></div>
+            <div><b>Отчество:</b> <input id="patronymic" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}"
+                    required></div>
+            <div><b>Год рождения:</b> <input id="year" type="number" min="1900" max="2020" class="text-input"
+                    pattern="(?:19|20)[0-9]{2}" required></div>
+            <div><b>Телефон:</b>
+                <!--<input id="phone" type="tel" class="text-input" pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="+375(__)___-__-__" required>-->
+                <div class="formItem"><input id="phone" type="tel" class="text-input"
+                        pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
+                        placeholder="+375(__)___-__-__" required></div>
             </div>
-           
-            <div class="addBorder">
-                <div id="message2" style="font-size: 14px; color: red;"></div>
-                <input type="text" class="text-input" placeholder="Заголовок" id="addBlockTitle">
-                <button class="addBlockBtn" onclick="addBlock(document.getElementById('addBlockTitle').value)">Добавить блок</button>
-            </div>
-            
-            <button onclick="checkPattern()" class="generatorBtn">Генерировать</button>
-            
+            <div><b>Эл. почта:</b> <input id="email" type="email" class="text-input" required></div>
         </div>
 
-        <script src="js/main.js" defer></script>
-        <script src="js/imgLoad.js" defer></script>
-        <script src="js/phoneImput.js" defer></script>
-        <script src="js/blocks.js" defer></script>
-    </body>
+        <div id="addBlockBox">
+            <div id="message2"></div>
+            <input type="text" class="text-input" placeholder="Заголовок" id="addBlockTitle">
+            <button class="addBlockBtn" onclick="addBlock(document.getElementById('addBlockTitle').value)">Добавить
+                блок</button>
+        </div>
+
+        <div id="message"></div>
+        <button onclick="checkPattern()" class="generatorBtn">Генерировать</button>
+    </div>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/imgLoad.js" defer></script>
+    <script src="js/phoneImput.js" defer></script>
+    <script src="js/blocks.js" defer></script>
+</body>
+
 </html>
