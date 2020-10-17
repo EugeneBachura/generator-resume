@@ -1,3 +1,7 @@
+var workingAge = new Date().getFullYear() - 14;
+document.getElementById("year").max = workingAge;
+console.log(workingAge);
+
 var formFild,
   flag = true;
 
@@ -35,7 +39,7 @@ function checkPattern() {
   } else document.getElementById("patronymic").style.border = "";
   if (!document.getElementById("year").checkValidity()) {
     mes.innerHTML =
-      "Неверный ввод года рождения. Год должен находиться в диапазоне от 1900 до 2020";
+      "Неверный ввод года рождения. Год должен находиться в диапазоне от 1900 до "+workingAge;
     document.getElementById("year").style.border = "solid 1px red";
     return;
   } else document.getElementById("year").style.border = "";
@@ -46,7 +50,7 @@ function checkPattern() {
     return;
   } else document.getElementById("phone").style.border = "";
   if (!document.getElementById("email").checkValidity()) {
-    mes.innerHTML = "Неверный ввод почты";
+    mes.innerHTML = "Проверьте правильность ввода адреса электронной почты";
     document.getElementById("email").style.border = "solid 1px red";
     return;
   } else document.getElementById("email").style.border = "";
@@ -85,7 +89,7 @@ function generateHTMLResume() {
   var recumeContent =
     "<head><meta charset='utf-8'><title>Resume</title></head>";
   var styles =
-    "<style>body {display: flex; flex-flow: row wrap; justify-content: space-around; width: 800px; margin: auto; margin-top: 20px} img {height: 250px; object-fit: cover; box-shadow: 0px 0px 5px 0px black; width: 250px; border-radius: 50%;} .mainBlock {padding: 10px} .contacts > h4 {margin-bottom: 0} .contentItem { padding: 1rem; background-color: rgb(7 48 89 / 47%); color: white; margin: 1rem; border: solid 3px rgb(65 69 73)} .contentItem > div {margin-bottom: 15px}</style>";
+    "<style>body {display: flex; align-content: center; flex-flow: row wrap; justify-content: space-around; width: 800px; margin: auto; margin-top: 20px} img {height: 250px; object-fit: cover; box-shadow: 0px 0px 5px 0px black; width: 250px; border-radius: 50%;} .mainBlock {padding: 10px} .contacts > h4 {margin-bottom: 0} .contentItem { padding: 1rem; background-color: rgb(7 48 89 / 45%); color: white; margin: 1rem; border: solid 3px rgb(65 69 73); width: 100%;} .contentItem > div {margin-bottom: 15px}</style>";
   recumeContent =
     recumeContent +
     styles +
@@ -133,7 +137,7 @@ function generateHTMLResume() {
     }
   }
   recumeContent = recumeContent + "</body>";
-  generateFile("resume.html", recumeContent);
+  generateFile("CV.html", recumeContent);
 }
 
 function generateFile(name, value) {
