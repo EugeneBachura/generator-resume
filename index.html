@@ -17,31 +17,24 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <h1>Resume Generator</h1>
-
         <div id="page-wrapper">
-            
-            <div id="fileDisplayArea">
-                <img src="imgs/noimg.png"/>
+            <h1>Resume Generator</h1>
+            <div id="displayArea">
+                <img id="imageDisplayArea" src="imgs/noimg.png"/>
             </div>
             <div id="resumeForm" class="form">
                 <div id="message" style="font-size: 14px; color: red;"></div>
-                <div><b>Загрузите фото:</b> <input type="file" id="fileInput" required></div>
+                <div><b>Загрузите фото:</b> <input type="file" id="fileInput" accept="image/*" required></div>
                 <div><b>Фамилия:</b> <input id="surname" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required></div>
                 <div><b>Имя:</b> <input id="name" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required></div>
                 <div><b>Отчество:</b> <input id="patronymic" type="text" class="text-input" pattern="[А-Я]{1}[а-я]{1,255}" required></div>
                 <div><b>Год рождения:</b> <input id="year" type="number" min="1900" max="2020" class="text-input" pattern="(?:19|20)[0-9]{2}" required></div>
-                <div><b>Телефон:</b> <input id="phone" type="tel" class="text-input" pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="+375(__)___-__-__" required></div>
-                <!--<div><b>Почта:</b> <input id="email" type="email" class="text-input" pattern="[a-z0-9_\.-]@[a-z0-9-]+\.[a-z]{2,4}\.?[a-z]{2,6}" required></div>-->
-                <div><b>Почта:</b> <input id="email" type="email" class="text-input" required></div>
+                <div><b>Телефон:</b> <!--<input id="phone" type="tel" class="text-input" pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="+375(__)___-__-__" required>-->
+                    <div class="formItem"><input id="phone" type="tel" class="text-input" pattern="\+375\s?[\(]{0,1}[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" placeholder="+375(__)___-__-__" required></div>
+                </div>
+                <div><b>Эл. почта:</b> <input id="email" type="email" class="text-input" required></div>
             </div>
            
-
-            <!--<div id="addBlockForm" class="addBorder" style="display: none;">
-                <input type='button' value='Добавить поле' onclick="addInputField()">
-                <input type="submit" form="addBlockForm"  value="Применить">
-            </div>
-            <p></p>-->
             <div class="addBorder">
                 <div id="message2" style="font-size: 14px; color: red;"></div>
                 <input type="text" class="text-input" placeholder="Заголовок" id="addBlockTitle">
@@ -49,12 +42,12 @@
             </div>
             
             <button onclick="checkPattern()" class="generatorBtn">Генерировать</button>
-
+            
         </div>
 
-        <script src="main.js" async defer></script>
-        <script src="js/imgLoad.js" async defer></script>
-        <script src="js/phoneImput.js" async defer></script>
-        <script src="js/blocks.js" async defer></script>
+        <script src="js/main.js" defer></script>
+        <script src="js/imgLoad.js" defer></script>
+        <script src="js/phoneImput.js" defer></script>
+        <script src="js/blocks.js" defer></script>
     </body>
 </html>
